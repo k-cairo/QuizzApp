@@ -1,0 +1,29 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Léna Quizz</title>
+    <!-- CSS only -->
+
+    <link rel="stylesheet" href="{% static 'quizz/css/style.css' %}">
+
+</head>
+<body>
+
+<div class="section-top">
+    <h1 class="question top">QUESTION 1: BOBO AU COEUR</h1>
+    <img class="logo top" src="{% static 'quizz/images/australie.png' %}">
+</div>
+
+<div>
+    <h1>Réponse 1</h1>
+    <h1>Réponse 2</h1>
+    <h1>Réponse 3</h1>
+    <h1>Réponse 4</h1>
+</div>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
