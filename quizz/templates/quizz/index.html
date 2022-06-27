@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block question %}Question {{ num }} : {{ question.question }}{% endblock %}
 
-{% block content %}
-
-{% endblock %}
+{% block reponse1 %}{{ question.reponse1 }}{% endblock %}
+{% block reponse2 %}{{ question.reponse2 }}{% endblock %}
+{% block reponse3 %}{{ question.reponse3 }}{% endblock %}
+{% block reponse4 %}{{ question.reponse4 }}{% endblock %}

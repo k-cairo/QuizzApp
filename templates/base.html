@@ -4,26 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Léna Quizz</title>
-    <!-- CSS only -->
-
     <link rel="stylesheet" href="{% static 'quizz/css/style.css' %}">
-
 </head>
 <body>
-
 <div class="section-top">
-    <h1 class="question top">QUESTION 1: BOBO AU COEUR</h1>
+    <h1 class="question top center">{% block question %}{% endblock %}</h1>
     <img class="logo top" src="{% static 'quizz/images/australie.png' %}">
 </div>
 
-<div>
-    <h1>Réponse 1</h1>
-    <h1>Réponse 2</h1>
-    <h1>Réponse 3</h1>
-    <h1>Réponse 4</h1>
+{% if next_num <= total_questions %}
+<div class="section-reponse">
+    <div id="reponse1">
+        <button id="1" class="center"></button>
+        <h2 class="center">{% block reponse1 %}{% endblock %}</h2>
+    </div>
+
+    <div id="reponse2">
+        <button id="2" class="center"></button>
+        <h2 class="center">{% block reponse2 %}{% endblock %}</h2>
+    </div>
+
+    <div id="reponse3">
+        <button id="3" class="center"></button>
+        <h2 class="center">{% block reponse3 %}{% endblock %}</h2>
+    </div>
+
+    <div id="reponse4">
+        <button id="4" class="center"></button>
+        <h2 class="center">{% block reponse4 %}{% endblock %}</h2>
+    </div>
 </div>
 
-{% block content %}
-{% endblock %}
+
+{% else %}
+{% block resultat %}{% endblock %}
+{% endif %}
+
+<div class="section-bottom">
+    {% if next_num < total_questions %}
+    <a class="deactivate" href="{% url 'quizz-question' next_num %}">
+    <img class="fleche" src="{% static 'quizz/images/fleche.png' %}" alt="">
+    </a>
+    {% elif next_num == total_questions %}
+    <a class="deactivate" href="{% url 'quizz-resultat' %}">
+    <img class="fleche" src="{% static 'quizz/images/fleche.png' %}" alt="">
+    </a>
+    {% else %}
+        <a class="deactivate" href="{% url 'quizz-resultat' %}">
+    </a>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    var bonneReponse = "{{ question.bonne_reponse }}";
+    var score = "{{ score }}"
+ </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{% static 'quizz/js/index.js' %}"></script>
 </body>
 </html>

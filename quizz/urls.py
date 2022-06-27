@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import index
+from .views import question, resultat
 
 urlpatterns = [
-    path('quizz/', index, name='quizz-index')
+    path('question_<int:num>/', question, name='quizz-question'),
+    path('resultat/', resultat, name='quizz-resultat'),
 ]
