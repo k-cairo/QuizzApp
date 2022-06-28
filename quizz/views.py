@@ -18,4 +18,5 @@ def resultat(request):
     questions = Question.objects.all()
     next_num = len(questions) + 2
     return render(request, "quizz/resultat.html", context={"next_num": next_num,
-                                                           "total_questions": len(questions) + 1})
+                                                           "total_questions": len(questions) + 1,
+                                                           "reel_total_question": len(questions)})

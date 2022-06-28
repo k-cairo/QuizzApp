@@ -3,6 +3,17 @@
 
 {% block resultat %}
 <div class="div-result">
-    <p class="resultat">Ton score est de : </p>
+    <p class="resultat">Ton score est de : <span id="score"></span> / {{ reel_total_question }}</p>
 </div>
+
+<!--TODO-->
+{% if score / reel_total_question == 1.0 %}
+FELICITATIONS
+{% elif score / reel_total_question > 0.8 %}
+Bravo
+{% if score / reel_total_question > 0.4 %}
+Tu peux mieux faire
+{% else %}
+C'est pas trop ca
+
 {% endblock %}
