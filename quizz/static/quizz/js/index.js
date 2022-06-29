@@ -2,8 +2,21 @@ if (questionNumero == 1) {
 sessionStorage.setItem("score", "0");
 };
 
-var scoreFinal = parseInt(sessionStorage.getItem("score"));
-$("#score").text(scoreFinal);
+
+if (questionNumero == "") {
+    var scoreFinal = parseInt(sessionStorage.getItem("score"));
+    $("#score").text(scoreFinal);
+
+    if (scoreFinal / parseInt(questionTotal) == 1) {
+        $("#commentaire").text("FELICITATIONS");
+    } else if (scoreFinal / parseInt(questionTotal) > 0.8) {
+        $("#commentaire").text("BRAVO");
+    } else if (scoreFinal / parseInt(questionTotal) > 0.4) {
+        $("#commentaire").text("TU PEUX MIEUX FAIRE");
+    } else {
+        $("#commentaire").text("C'EST PAS TROP CA");
+    }};
+
 
 $("button").click(function(e) {
     var buttonTarget = e.target.id;
@@ -26,6 +39,7 @@ $("button").click(function(e) {
     $("a").removeClass("deactivate");
     $("#score").text(score);
 });
+
 
 $("a").click(function() {
     $("a").addClass("deactivate");

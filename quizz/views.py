@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Question
+
+
+def home(request):
+    return redirect("quizz-question", num=1)
 
 
 def question(request, num):
@@ -11,7 +15,8 @@ def question(request, num):
         return render(request, "quizz/index.html", context={"question": target_question,
                                                             "num": num,
                                                             "next_num": next_num,
-                                                            "total_questions": len(questions) + 1})
+                                                            "total_questions": len(questions) + 1,
+                                                            "reel_total_question": len(questions)})
 
 
 def resultat(request):
